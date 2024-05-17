@@ -60,28 +60,31 @@ Please download the offical Med-AD benchmark from DDAD [Google Drive](https://dr
 The Med-AD benchmark is organized using four public datasets, and VinDr-CXR is one of them.
 
 ## Usage
+Update the dataset path and pre-trained parameters with your specified paths. <br>
 Training the methods PPAD on datasets.
 ```bash
 cd few_shot
 
-python train_zhang.py  # Train PPAD on ZhangLab dataset
-python train_chexpert.py # Train PPAD on CheXpert dataset
-python train_vincxr.py  # Train PPAD on VinDr dataset
+python train_zhang.py      # Train PPAD on ZhangLab dataset
+python train_chexpert.py  # Train PPAD on CheXpert dataset
+python train_vincxr.py      # Train PPAD on VinDr dataset
 ```
 
 Inference the method CheXzero on datasets.
 ```bash
 cd zero_shot
 
-python chexzero_zhang.py  # Train PPAD on ZhangLab dataset
-python chexzero_chexpert.py # Train PPAD on CheXpert dataset
-python chexzero_vincxr.py  # Train PPAD on VinDr dataset
+python chexzero_zhang.py      # Test CheXzeor (baseline) on ZhangLab dataset
+python chexzero_chexpert.py  # Test CheXzeor (baseline) on CheXpert dataset
+python chexzero_vincxr.py      # Test CheXzeor (baseline) on VinDr dataset
 ```
 Inference the method PPAD on datasets.
 ```bash
-python chexzero_zhang.py  # Train PPAD on ZhangLab dataset
-python chexzero_chexpert.py # Train PPAD on CheXpert dataset
-python chexzero_vincxr.py  # Train PPAD on VinDr dataset
+cd inference
+
+python test_zhang.py       # Test PPAD on ZhangLab dataset
+python test_chexpert.py   # Test PPAD on CheXpert dataset
+python test_vincxr.py       # Test PPAD on VinDr dataset
 ```
 
 

@@ -32,7 +32,7 @@ class VinCXR(torch.utils.data.Dataset):
             transforms.Resize(size=224, interpolation=Image.BICUBIC), 
             transforms.CenterCrop(size=(224, 224)),
             transforms.ToTensor(),
-            transforms.Normalize(mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+            transforms.Normalize(mean=[0.39799, 0.39799, 0.39799], std=[0.32721349, 0.32721349, 0.32721349])
         ])
 
         self.transforms = transform

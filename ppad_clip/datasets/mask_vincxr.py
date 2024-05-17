@@ -65,29 +65,22 @@ class MaskVinCXR(torch.utils.data.Dataset):
 
         mask_1 = torch.zeros((224, 224, 1))
         mask_1[:, 0:112, :] = 1
-        # mask_1 = mask_1.permute(2,0,1).unsqueeze(0)
 
         mask_2 = torch.zeros((224, 224, 1))
         mask_2[:, 112:, :] = 1
-        # mask_2 = mask_2.permute(2,0,1).unsqueeze(0)
 
         mask_3 = torch.zeros((224, 224, 1))
         mask_3[0:120, :, :] = 1
-        # mask_3 = mask_3.permute(2,0,1).unsqueeze(0)
 
         mask_4 = torch.zeros((224, 224, 1))
         mask_4[120:, :, :] = 1
-        # mask_4 = mask_4.permute(2,0,1).unsqueeze(0)
 
         mask_5 = torch.zeros((224, 224, 1))
         mask_5[:, :, :] = 1
-        # mask_5 = mask_5.permute(2,0,1).unsqueeze(0)
 
         self.masks = [mask_1, mask_2, mask_3, mask_4, mask_5]
         self.position_names = ["left lung", "right lung", "upper lung", "lower lung", ""]
-        # print(len(self.train_list_normal), len(self.train_list_abnormal), len(self.test_list_normal), len(self.test_list_abnormal))
-        # self.masks = [mask_5, mask_5, mask_5, mask_5, mask_5]
-        # self.position_names = ["", "", "", "", ""]
+
 
     def load_json(self):
         json_files = self.root + '/data.json'
@@ -105,12 +98,10 @@ class MaskVinCXR(torch.utils.data.Dataset):
 
     def load_data(self):
         if self.train:
-            # items = os.listdir(os.path.join(self.root, 'images'))
             items = random.sample(self.train_list_normal, int(self.shot))
 
             for item in items:
                 img = Image.open(os.path.join(self.root, 'images', item)).convert('L').resize(self.img_size)
-                # 将图像拓展为3通道
                 img = np.array(img)
                 img = np.stack((img,)*3, axis=-1)
                 img = Image.fromarray(img)
@@ -127,7 +118,6 @@ class MaskVinCXR(torch.utils.data.Dataset):
                 img = Image.fromarray(img)
 
                 self.data.append((img, torch.Tensor([1,0])))
-                # self.data.append((Image.open(os.path.join(self.root, 'normal_256', item)).resize(self.img_size), 0))
 
             for idx, item in enumerate(self.test_list_abnormal):
 
@@ -136,16 +126,12 @@ class MaskVinCXR(torch.utils.data.Dataset):
                 img = np.stack((img,)*3, axis=-1)
                 img = Image.fromarray(img)
                 self.data.append((img, torch.Tensor([0,1])))
-                # self.data.append((Image.open(os.path.join(self.root, 'pneumonia_256', item)).resize(self.img_size), 1))
         
-        
-
         print('%d data loaded from: %s' % (len(self.data), self.root))
     
 
     def __getitem__(self, index):
         img, label = self.data[index]
-        # print(img.size)
         if self.train == True:
             ran = random.random()
             if ran >= self.prob:
@@ -163,7 +149,6 @@ class MaskVinCXR(torch.utils.data.Dataset):
             mask = mask.permute(2,0,1)
             img= self.transforms(img)
 
-            # print(img.shape, label.shape, mask, position_name)
             return img,  label.long(), mask, position_name
 
         else:
@@ -175,9 +160,6 @@ class MaskVinCXR(torch.utils.data.Dataset):
                 masks.append(m)
             img= self.transforms(img)
 
-
-
-            # print(img.shape, label.shape, mask, position_name)
             return img,  label.long(), masks, position_name
 
 

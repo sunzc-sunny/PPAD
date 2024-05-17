@@ -12,7 +12,7 @@ import random
 import json
 
 class VinCXR(torch.utils.data.Dataset):
-    def __init__(self, root="/data/sunzc/Med-AD_v1_D/VinCXR", train=True, img_size=(256, 256), normalize=False, enable_transform=True, full=True):
+    def __init__(self, root="", train=True, img_size=(256, 256), normalize=False, enable_transform=True, full=True):
 
         self.data = []
         self.train = train

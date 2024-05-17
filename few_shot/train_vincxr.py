@@ -22,7 +22,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 STATUS = ['normal', 'pneumonia']
 
 # pre-trained model path
-model_path = ""
+model_path = "./best_64_0.0001_original_35000_0.864.pt"
 
 model = PPAD(STATUS, backbone_name='ViT-B/32', n_ctx=16, class_specify=False, class_token_position="end", pretrained_dir=model_path, pos_embedding=True, return_tokens=False)
 

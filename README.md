@@ -4,7 +4,7 @@
   <p align="center">
 Zhichao Sun, Yuliang Gu, Yepeng Liu, Zerui Zhang, Zhou Zhao, Yongchao Xu
   </p>
-  <!-- <h3 align="center"><a href="https://doi.org/10.1016/j.media.2023.102794">Paper</a> -->
+  <h3 align="center"><a href="https://arxiv.org/abs/2405.11976">Paper</a>
   <!-- <div align="center"></div> -->
 </p>
 

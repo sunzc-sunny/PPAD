@@ -143,4 +143,12 @@ PPAD on VinDr-CXR dataset [Google Drive](https://drive.google.com/file/d/1UYiR5P
 This project is licensed under the MIT License
 
 ## Citation
-
+```bibtex
+@misc{sun2024positionguided,
+      title={Position-Guided Prompt Learning for Anomaly Detection in Chest X-Rays}, 
+      author={Zhichao Sun and Yuliang Gu and Yepeng Liu and Zerui Zhang and Zhou Zhao and Yongchao Xu},
+      year={2024},
+      eprint={2405.11976},
+      archivePrefix={arXiv}
+}
+```
